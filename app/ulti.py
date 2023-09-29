@@ -12,7 +12,7 @@ def fetch_and_parse(url):
     try:
         html = requests.get(url, verify=False)
         soup = BeautifulSoup(html.text, "html.parser")
-        root =  etree.HTML(str(soup))
+        root =  etree.HTML(str(soup), parser=etree.HTMLParser(remove_comments=True))
         tree = etree.ElementTree(root)
 
         return root, tree, None
@@ -75,6 +75,6 @@ def extract_data_from(root, config):
             if one_result:
                 results.append(one_result)
         
-        return results, None
+        return results[::-1], None
     except Exception as e:
         return None, str(e)
