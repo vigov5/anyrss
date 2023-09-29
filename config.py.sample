@@ -1,0 +1,12 @@
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///rss.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable modification tracking (optional)
+
+CSRF_ENABLED = True
+SECRET_KEY = 'CHANGE_ME_PLEASE'
+CSRF_SESSION_KEY = 'CHANGE_ME_PLEASE'
+
+BASIC_AUTH_USERNAME = 'CHANGE_ME_PLEASE'
+BASIC_AUTH_PASSWORD = 'CHANGE_ME_PLEASE'

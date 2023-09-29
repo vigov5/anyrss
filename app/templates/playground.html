@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    /* Apply some basic styles for the split layout */
+    body {
+        margin: 8;
+        padding: 8;
+        overflow: hidden;
+    }
+
+    /* Create two equal-width columns */
+    .column {
+        width: 50%;
+        height: 100vh;
+        /* Make each column take up the full viewport height */
+        float: left;
+    }
+
+
+    /* Style the right column */
+    .right-column {
+        background-color: #ccc;
+    }
+
+    /* Clear floats after the columns */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Add some content and style to the columns */
+    .content {
+        padding: 20px;
+        font-size: 18px;
+    }
+</style>
+<h2>Play Ground</h2>
+<div class="column left-column">
+    <div class="content">
+        <form role="form" action="" method="POST">
+            {% include 'form_error.html' %}
+            <table>
+                {% for field in form %}
+                <tr>
+                    <th>
+                        {% if field.name != 'submit' %}
+                        {{ field.label }}
+                        {% endif %}
+                    </th>
+                    <td>{{ field(rows="20", cols="100", size="100") }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+    <div>
+        <p>
+            <h3>Tips</h3>
+            <ol>
+                <li>base is the container for each item</li>
+                <li>Required field is: guid, title, description, link, date, date_format</li>
+                <li>Optional field is: tag</li>
+                <li>If your link is relative, add field: <b>link_prefix</b></li>
+            </ol>
+        </p>
+    </div>
+</div>
+<div class="column right-column">
+    <div class="content">
+        <pre style="overflow-y: scroll!important;">
+{{ results }}
+        </pre>
+    </div>
+</div>
+<div class="clearfix"></div>
+{% endblock %}

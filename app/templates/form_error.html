@@ -1,0 +1,7 @@
+{% for field in form if not field.id == 'csrf_token' %}
+{% if field.errors%}
+{% for message in field.errors %}
+<div style="color:red;">{{ message|safe }}</div>
+{% endfor %}
+{% endif %}
+{% endfor %}

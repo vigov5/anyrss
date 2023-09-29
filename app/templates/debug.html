@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+This page add Xpath to each HTML element from URL for easier debug
+<form role="form" action="" method="POST">
+    {% include 'form_error.html' %}
+    <table>
+        {% for field in form %}
+        <tr>
+            <th>
+                {% if field.name != 'submit' %}
+                {{ field.label }}
+                {% endif %}
+            </th>
+            <td>{{ field(rows="40", cols="100", size="100") }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% if html %}
+<style>
+* {
+	outline: 1px solid red;
+}
+</style>
+{% endif %}
+{{ html | safe }}
+{% endblock %}
