@@ -17,7 +17,7 @@ def fetch_and_parse(url):
 
         return root, tree, None
     except Exception as e:
-        return None, None, e.message
+        return None, None, str(e)
 
 
 def gen_feed(name, url, date_format, items):
@@ -77,4 +77,4 @@ def extract_data_from(root, config):
         
         return results, None
     except Exception as e:
-        return None, e.message
+        return None, str(e)
